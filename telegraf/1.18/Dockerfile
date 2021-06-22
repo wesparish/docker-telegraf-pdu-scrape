@@ -8,7 +8,7 @@ RUN apt-get update && \
 ADD pdu-scrape/requirements.txt /
 RUN pip3 install -r requirements.txt
 
-ENV LOG_LEVEL="WARN" LC_ALL=C.UTF-8 LANG=C.UTF-8
+ENV LOG_LEVEL="WARNING" LC_ALL=C.UTF-8 LANG=C.UTF-8
 
 COPY pdu-scrape/pdu-scrape.py /pdu-scrape.py
 RUN chown root:root pdu-scrape.py
