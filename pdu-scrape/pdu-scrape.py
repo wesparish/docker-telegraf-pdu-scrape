@@ -26,11 +26,11 @@ def main():
     parser = argparse.ArgumentParser(description='Collect information from a Dell Smart PDU via SSH')
     parser.add_argument('host', nargs='*', default=os.getenv('PDU_SCRAPE_HOSTS', '').split(','),
                         help='PDU host/IP with SSH enabled')
-    parser.add_argument('--user', default='admin',
+    parser.add_argument('--user', default=os.getenv('PDU_SCRAPE_USER', 'admin'),
                         help='SSH username, default: admin')
-    parser.add_argument('--password', default='admin',
+    parser.add_argument('--password', default=os.getenv('PDU_SCRAPE_PASSWORD', 'admin'),
                         help='SSH password, default: admin')
-    parser.add_argument('--verbose', default=False, action="store_true",
+    parser.add_argument('--verbose', default=os.getenv('PDU_SCRAPE_VERBOSE', 'False').lower() == "true", action="store_true",
                         help='Toggle verbose output')
 
     args = parser.parse_args()
@@ -38,7 +38,7 @@ def main():
     if args.verbose:
       logging.basicConfig(format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                           stream=sys.stdout,
-                          level=getattr(logging, os.getenv('LOG_LEVEL', 'INFO')))
+                          level=getattr(logging, os.getenv('LOG_LEVEL', 'DEBUG')))
     else:
       logging.basicConfig(format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                           filename="%s.log" % (os.path.basename(__file__)),

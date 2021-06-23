@@ -16,6 +16,9 @@ RUN chown root:root pdu-scrape.py
 RUN mkdir /root/.ssh &&\
     chmod 700 /root/.ssh
 COPY pdu-scrape/ssh/config /root/.ssh/config
-RUN chmod 400 /root/.ssh/config
+RUN chmod 600 /root/.ssh/config
 
-ENV PDU_SCRAPE_HOSTS=10.2.1.18,10.2.1.102
+ENV PDU_SCRAPE_HOSTS=10.2.1.18,10.2.1.102 \
+    PDU_SCRAPE_USER=admin \
+    PDU_SCRAPE_PASSWORD=admin \
+    PDU_SCRAPE_VERBOSE=false

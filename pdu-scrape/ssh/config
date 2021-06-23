@@ -1,3 +1,4 @@
+StrictHostKeyChecking no
 User admin
 SendEnv LANG LC_*
 HashKnownHosts yes

@@ -1,1 +1,7 @@
 Telegraf container with a custom SSH scraping tool for Dell PDUs
+
+Env vars (defaults shown):
+PDU_SCRAPE_HOSTS=10.2.1.18,10.2.1.102
+PDU_SCRAPE_USER=admin
+PDU_SCRAPE_PASSWORD=admin
+PDU_SCRAPE_VERBOSE=false
